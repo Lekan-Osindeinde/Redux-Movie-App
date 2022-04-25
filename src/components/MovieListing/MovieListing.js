@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 import { getAllMovies, getAllShows } from "../../features/movies/movieSlice";
 import MovieCard from "../MovieCard/MovieCard";
 import "./MovieListing.scss";
-
 const MovieListing = () => {
   const movies = useSelector(getAllMovies);
   const shows = useSelector(getAllShows);
@@ -20,11 +19,12 @@ const MovieListing = () => {
         <h3>{movies.Error}</h3>
       </div>
     );
+
   renderShows =
     shows.Response === "True" ? (
       shows.Search.map((movie, index) => <MovieCard key={index} data={movie} />)
     ) : (
-      <div className="movies-error">
+      <div className="shows-error">
         <h3>{shows.Error}</h3>
       </div>
     );

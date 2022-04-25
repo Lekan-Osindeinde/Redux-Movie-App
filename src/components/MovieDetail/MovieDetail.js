@@ -1,22 +1,22 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams } from "react-router";
 import {
-  fetchAsyncMovieorShowsDetail,
-  getSelectedMovieorShows,
-  removeSelectedMovieorShows,
+  fetchAsyncMovieOrShowDetail,
+  getSelectedMovieOrShow,
+  removeSelectedMovieOrShow,
 } from "../../features/movies/movieSlice";
 import "./MovieDetail.scss";
 
 const MovieDetail = () => {
   const { imdbID } = useParams();
   const dispatch = useDispatch();
-  const data = useSelector(getSelectedMovieorShows);
+  const data = useSelector(getSelectedMovieOrShow);
   console.log(data);
   useEffect(() => {
-    dispatch(fetchAsyncMovieorShowsDetail(imdbID));
+    dispatch(fetchAsyncMovieOrShowDetail(imdbID));
     return () => {
-      dispatch(removeSelectedMovieorShows());
+      dispatch(removeSelectedMovieOrShow());
     };
   }, [dispatch, imdbID]);
   return (
